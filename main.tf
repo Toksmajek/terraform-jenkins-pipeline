@@ -2,6 +2,12 @@
 provider "aws" {
   region = "us-east-1"
 }
+terraform {
+  backend "s3" {
+    bucket = "backend-sample"
+    region = "us-east-1"
+  }
+}
 # Create the VPC, subnets, internet gateway, and availability zones
 resource "aws_vpc" "Devops-vpc" {
   cidr_block           = "10.0.0.0/16"
@@ -109,10 +115,3 @@ resource "aws_instance" "web-app2" {
     Name = "web-app2"
   }
 }
-
-
-
-
-
-
-
